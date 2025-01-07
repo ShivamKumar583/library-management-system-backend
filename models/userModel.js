@@ -6,6 +6,13 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     isAdmin: { type: Boolean, default: false },
+    borrowedBooks: [
+    {
+      bookId: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
+      borrowedAt: { type: Date, default: Date.now },
+      dueDate: { type: Date },
+    },
+  ],
 });
 
 // Hash password before saving
